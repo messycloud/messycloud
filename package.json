@@ -30,7 +30,7 @@
     "typescript": "^4.9.5"
   },
   "lint-staged": {
-    "*.{ts,json,scss}": [
+    "**/*.{ts,json,scss,css}": [
       "prettier --write",
       "eslint --fix"
     ]

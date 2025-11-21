@@ -22,13 +22,13 @@ export default class MenuBar {
     const menuItems = newMenu.querySelector<HTMLDivElement>(".menu__items")!
 
     const menu = menuItems.closest(".menu")!
-        
+
     menuItems.addEventListener("click", () => {
       if (document.activeElement) {
         (document.activeElement as HTMLElement).blur()
       }
       menuItems.style.display = "none"
-      
+
       const tryRemoveStyle = () => {
         requestAnimationFrame(() => {
           if (menu.matches(":hover")) {
@@ -41,7 +41,7 @@ export default class MenuBar {
       tryRemoveStyle()
     })
 
-    items.forEach(item => {
+    items.forEach((item) => {
       if ("link" in item) {
         const menuLink = document.createElement("a")
         menuLink.className = "menu__item"
@@ -58,6 +58,5 @@ export default class MenuBar {
     })
 
     MENU_BAR.appendChild(newMenu)
-
   }
 }
