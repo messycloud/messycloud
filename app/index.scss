@@ -17,6 +17,7 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   overflow: hidden;
   cursor: default;
+  margin: 0;
 }
 
 .busy-bee {
@@ -41,7 +42,7 @@ button {
   right: 0;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.5rem auto 2rem;
+  grid-template-rows: min-content auto 2rem;
   &.noscript {
     display: none;
   }

@@ -1,0 +1,56 @@
+#menu-bar {
+  font-size: 90%;
+  background-color: var(--atari-white);
+  padding: 0 .5rem;
+  box-shadow:1px 1px 5px #0000004d;
+  border-bottom: black 1px solid;
+  display: flex;
+  
+}
+
+.menu {
+  display: inline-block;
+  position: relative;
+}
+
+.menu:first-child .menu__title {
+  font-weight: bold;
+}
+
+button.menu__title, .menu__item {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+  padding: 0.25rem 0.75rem;
+  font-weight: normal;
+}
+
+.menu__items {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  background-color: var(--atari-white);
+  min-width: 10rem;
+  border: 1px solid black;
+  box-shadow: 0 2px 5px #0000004d;
+}
+
+.menu__title:hover + .menu__items,
+.menu__items:hover,
+.menu__title:focus +.menu__items {
+  display: flex;
+}
+
+.menu:hover .menu__title,
+.menu__title:focus,
+.menu__item:hover,
+.menu__item:focus {
+  color: var(--atari-white);
+  background-color: black;
+}
