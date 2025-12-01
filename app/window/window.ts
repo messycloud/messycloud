@@ -10,7 +10,6 @@ export interface WindowDef {
   y?: number
   page: string
   titleText: string
-  fixedSize?: boolean
 }
 
 export class Window {
@@ -21,7 +20,6 @@ export class Window {
   public page: string
   public titleText: string
 
-  public fixedSize: boolean
   public zIndex = -1
   public minimised = false
   public maximised = false
@@ -39,7 +37,7 @@ export class Window {
   private content: HTMLIFrameElement
   private contentCover: HTMLElement
 
-  constructor(os: OS, page: string, titleText: string, fixedSize = false) {
+  constructor(os: OS, page: string, titleText: string) {
     this.os = os
 
     const WINDOW = <HTMLTemplateElement>document.getElementById("messy-window")
@@ -50,7 +48,6 @@ export class Window {
 
     this.id = generateId()
     this.window.id = `window-${this.id}`
-    this.fixedSize = fixedSize
     this.page = page
     this.titleText = titleText
 
@@ -61,16 +58,6 @@ export class Window {
     this.title = win.querySelector(".window__title")!
     this.content = win.querySelector(".window__content__iframe")!
     this.contentCover = win.querySelector(".window__content__cover")!
-
-    if (this.fixedSize) {
-      this.sizeHandle.style.display = "none"
-      this.maxButton.disabled = true
-    }
-
-    if (this.fixedSize) {
-      this.sizeHandle.style.display = "none"
-      this.maxButton.disabled = true
-    }
 
     if (page) {
       this.loadContent(page, titleText)
@@ -140,10 +127,6 @@ export class Window {
   }
 
   maximise() {
-    if (this.fixedSize) {
-      return
-    }
-
     this.beforeMax = this.pos()
     this.os.maximiseWindow(this.id)
     this.sizeHandle.classList.add("disabled")
@@ -246,7 +229,7 @@ export class Window {
 
     // Resize window start
     const handleResizeStart = (e: TouchEvent | MouseEvent) => {
-      if (this.maximised || this.fixedSize) {
+      if (this.maximised) {
         return
       }
       if (!this.focused) {

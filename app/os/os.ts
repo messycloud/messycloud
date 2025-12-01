@@ -9,7 +9,7 @@ const MIN_WINDOW_H = 200
 
 export default class OS {
   public windows: Array<MessyWindow> = []
-  private menuBar = new MenuBar(this)
+  private menuBar = new MenuBar()
   public desktop = new Desktop(this)
   private taskBar = new TaskBar(this)
 
@@ -65,7 +65,6 @@ export default class OS {
       titleText: "[CAB] Emojis",
       w: 362,
       h: 306,
-      fixedSize: true,
     })
     this.desktop.addIcon("scrsaver.app", ICONS.APP_ICON, {
       page: "https://screensaver.messy.cloud",
@@ -84,7 +83,6 @@ export default class OS {
       titleText: "Awesome Match",
       w: 360,
       h: 420,
-      fixedSize: true,
     })
     this.desktop.addIcon("todo.app", ICONS.APP_ICON, {
       page: "https://todo.messy.cloud",
@@ -109,7 +107,6 @@ export default class OS {
       titleText: "Llamatron",
       w: 665,
       h: 455,
-      fixedSize: true,
     })
     this.desktop.addIcon("TRASH", ICONS.TRASH_ICON, {
       page: "https://underscore.space",
@@ -177,7 +174,7 @@ export default class OS {
 
     this.addBee()
     const { Window } = await import("../window/window")
-    const newWindow = new Window(this, win.page, win.titleText, win.fixedSize)
+    const newWindow = new Window(this, win.page, win.titleText)
     const desktop = this.desktop.pos
 
     this.windows.push(newWindow)

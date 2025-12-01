@@ -73,6 +73,12 @@
 
   &__button {
     background: var(--atari-white);
+    &:hover {
+      filter: brightness(90%);
+    }
+    &:active {
+      filter: brightness(110%);
+    }
     text-align: center;
 
     > * {
